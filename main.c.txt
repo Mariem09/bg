@@ -1,0 +1,68 @@
+#include "background.h"
+int main (int argc, char *argv[])
+{
+
+background bg;
+SDL_Event event;
+SDL_Surface *screen;
+perso p;
+
+int direction=0;
+if (SDL_Init (SDL_INIT_VIDEO) == -1) {
+printf ("SDL_Init failed: %s\n", SDL_GetError ());
+return EXIT_FAILURE;
+}
+screen = SDL_SetVideoMode (CAMERA_W, CAMERA_H, 32,SDL_HWSURFACE|SDL_DOUBLEBUF);
+
+
+initialiser_backround (&bg);
+SDL_Flip (screen);
+
+
+int continuer = 0;
+SDL_EnableKeyRepeat (SDL_DEFAULT_REPEAT_DELAY,SDL_DEFAULT_REPEAT_INTERVAL);
+
+while (!continuer)
+ {
+   while (SDL_PollEvent (&event))
+{
+    switch (event.type)
+ {
+   case SDL_QUIT:
+  continuer = 1;
+break;
+  case SDL_KEYDOWN:
+  switch (event.key.keysym.sym)
+ {
+ case SDLK_LEFT:
+direction==1;
+ scrollToLeft (&bg,direction);
+
+break;
+ case SDLK_RIGHT:
+direction=0;
+ scrolling (&bg,direction);
+break;
+case SDLK_UP:
+direction==2
+ scrollToup (&bg,direction);
+break;
+case SDLK_DOWN:
+direction==3
+ scrollTodown (&bg,direction);
+break;
+
+  }
+    break;
+  }
+}
+afficher_background (screen,bg);
+SDL_Flip (screen);
+}
+SDL_FreeSurface(screen);
+SDL_FreeSurface(bg.img);
+}
+
+
+
+

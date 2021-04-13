@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <SDL/SDL.h>
+#include <SDL/SDL_image.h>
+#include <SDL/SDL_mixer.h>
+#include <SDL/SDL_ttf.h>
+#include "background.h"
+
+void init_background(background *bg)
+{
+
+bg.img=IMG_Load("bg.jpg");
+
+bg->bgpos.x=0;
+bg->bgpos.y=0;
+bg->bgpos.w = b->img->w;
+bg->bgpos.h = b->img->h;
+
+music= Mix_LoadMUS("fob.mp3");
+Mix_PlayMusic(music,-1);
+
+pos_camera.x=0;
+pos_camera.y=0;
+bg->pos_camera.w=CAMERA_W;
+bg->pos_camera.h=CAMERA_H;
+
+}
+
+
+
+void scrolling (SDL_Rect * bgpos, int direction)
+{
+
+if direction==0
+{
+b->pos_camera.x++;
+}
+else 
+if
+{ 
+direction==1
+b->pos_camera.x--;
+}
+else 
+if
+{ 
+direction==2
+b->pos_camera.y++;
+}
+else 
+if
+{ 
+direction==3;
+b->pos_camera.y--;
+}
+}
